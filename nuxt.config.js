@@ -32,43 +32,15 @@ export default {
 	loading: false,
 
 	// # MODULES
-	modules: ['@nuxtjs/style-resources', '@nuxtjs/axios', '@nuxtjs/i18n'],
+	modules: [
+		'@nuxtjs/style-resources', //
+		'@nuxtjs/axios',
+		// '@nuxtjs/i18n',
+	],
 
 	// # STYLE RESOURCES MODULE
 	styleResources: {
 		scss: ['~/style/_utils.scss'],
-	},
-
-	// # NUXT-I18N MODULE
-	i18n: {
-		langDir: 'lang/',
-		locales: [
-			{
-				name: 'English',
-				shortname: 'ENG',
-				code: 'en',
-				iso: 'en-US',
-				file: 'en-US.js',
-				dir: 'ltr',
-			},
-			{
-				name: 'Español',
-				shortname: 'ESP',
-				code: 'es',
-				iso: 'es-ES',
-				file: 'es-ES.js',
-				dir: 'ltr',
-			},
-		],
-		defaultLocale: 'en',
-		lazy: true,
-		skipSettingLocaleOnNavigate: true,
-		parsePages: false,
-		strategy: 'prefix',
-		pages: {
-			home: { en: '/pokedex/', es: '/pokedex/' },
-			pokemon: { en: '/pokedex/pokemon/:id', es: '/pokedex/pokemon/:id' },
-		},
 	},
 
 	// # BUILD MODULES

@@ -27,7 +27,7 @@ export const mutations = {
 };
 
 export const actions = {
-	async getPokemon({ state, commit }, id) {
+	async getPokemon({ state, commit, rootState }, id) {
 		commit('SET_ID', id);
 
 		await this.$axios
@@ -47,7 +47,7 @@ export const actions = {
 					const item = res.abilities[i];
 					await this.$axios.$get(item.ability.url).then((res) => {
 						const ability = res.names.find(
-							(item) => item.language.name === this.$i18n.locale
+							(item) => item.language.name === rootState.lang.locale
 						).name;
 						abilities.push(ability);
 					});
@@ -70,7 +70,7 @@ export const actions = {
 
 					await this.$axios.$get(url).then((res) => {
 						const characteristic = res.descriptions.find(
-							(item) => item.language.name === this.$i18n.locale
+							(item) => item.language.name === rootState.lang.locale
 						).description;
 						commit('SET_CHARACTERISTIC', characteristic);
 					});

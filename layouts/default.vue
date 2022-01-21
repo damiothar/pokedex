@@ -3,27 +3,29 @@
 		<div class="pokedex">
 			<div class="pokedex__inner">
 				<nav class="nav">
-					<NuxtLink :to="localePath({name: 'home'})">
+					<NuxtLink to="/">
 						<i class="nes-pokeball"></i>
 					</NuxtLink>
 					<div class="nav__lang">
 						<span></span>
-						<a
-							v-for="(locale, localeIndex) in locales"
-							:key="`locale${localeIndex}`"
-							:href="switchLocalePath(locale.code)"
+						<button
+							v-for="(value, key) in t"
+							:key="key"
+							
+							type="button"
 							class="nav__button"
-							:class="{'--active': locale.code == currentLocale}"
-							btp-cursor="pointer"
+							:class="{'--active': key == locale}"
+							
+							@click="SET_LOCALE(key)"
 						>
 							<input 
 								class="nes-radio"
 								type="radio"
 								disabled
-								:checked="locale.code == currentLocale ? true : false"
+								:checked="locale == key ? true : false"
 							></input>
-							<span>{{ locale.shortname }}</span>
-						</a>
+							<span>{{key}}</span>
+						</button>
 					</div>
 				</nav>
 				<Nuxt />
@@ -33,15 +35,14 @@
 </template>
 
 <script>
+import {mapState, mapMutations} from 'vuex';
 export default {
 	computed: {
-		locales() {
-			return this.$i18n.locales;
-		},
-		currentLocale() {
-			return this.$i18n.locale;
-		},
+		...mapState('lang', ['locale', 't'])
 	},
+	methods: {
+		...mapMutations('lang', ['SET_LOCALE'])
+	}
 };
 </script>
 
@@ -95,9 +96,10 @@ export default {
 	justify-content: space-between;
 	align-items: center;
 	margin-bottom: 4rem;
-	&__lang {
-	}
 	&__button {
+		background-color: transparent;
+		outline: none !important;
+		border: none;
 		color: $gray;
 		&.--active {
 			color: $black;

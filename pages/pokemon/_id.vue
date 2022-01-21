@@ -13,10 +13,10 @@
 
 				<!-- DATA -->
 				<div class="details__data">
-					<h2 class="subtitle">{{ $t('pokemon.characteristic') }}</h2>
+					<h2 class="subtitle">{{ t[locale].pokemon.characteristic }}</h2>
 					<p class="text">{{ characteristic }}</p>
 
-					<h2 class="subtitle">{{ $t('pokemon.abilities') }}</h2>
+					<h2 class="subtitle">{{ t[locale].pokemon.abilities }}</h2>
 					<ul class="list --mb0 nes-list is-disc">
 						<li v-for="ability in abilities" :key="ability" class="list__item">
 							<span class="is-dark">{{ ability }}</span>
@@ -27,18 +27,19 @@
 		</main>
 
 		<aside class="back">
-			<NuxtLink class="nes-btn" :to="localePath({ name: 'home' })">
-				{{ $t('general.back') }}
+			<NuxtLink class="nes-btn" to="/">
+				{{ t[locale].general.back }}
 			</NuxtLink>
 		</aside>
 	</div>
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 export default {
 	computed: {
+		...mapState('lang', ['locale', 't']),
 		...mapState('pokemon', [
 			'id',
 			'name',

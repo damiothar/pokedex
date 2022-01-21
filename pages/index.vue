@@ -1,7 +1,7 @@
 <template>
 	<div class="page">
 		<main class="page__main">
-			<h1 class="title">{{ $t('home.title') }}</h1>
+			<h1 class="title">{{ t[locale].home.title }}</h1>
 			<ul class="pokemons">
 				<li
 					v-for="pokemon in pokemons"
@@ -9,17 +9,7 @@
 					class="pokemons__item"
 				>
 					<strong>{{ pokemon.id | formatId }}.</strong>
-					<NuxtLink
-						class="pokemons__link"
-						:to="
-							localePath({
-								name: 'pokemon',
-								params: {
-									id: pokemon.id,
-								},
-							})
-						"
-					>
+					<NuxtLink class="pokemons__link" :to="`/pokemon/${pokemon.id}`">
 						{{ pokemon.name }}
 					</NuxtLink>
 				</li>
@@ -33,7 +23,7 @@
 				:class="{ 'is-disabled': pagination === 1 }"
 				@click.prevent="prevPokemons"
 			>
-				{{ $t('general.prev') }}
+				{{ t[locale].general.prev }}
 			</button>
 			<div class="pagination__number">
 				{{ pagination | formatPagination }} /
@@ -45,7 +35,7 @@
 				:class="{ 'is-disabled': pagination === maxPagination }"
 				@click.prevent="nextPokemons"
 			>
-				{{ $t('general.next') }}
+				{{ t[locale].general.next }}
 			</button>
 		</aside>
 	</div>
@@ -56,6 +46,7 @@ import { mapState, mapGetters, mapActions } from 'vuex';
 
 export default {
 	computed: {
+		...mapState('lang', ['locale', 't']),
 		...mapState('home', ['pokemons', 'pagination']),
 		...mapGetters('home', ['maxPagination']),
 	},
