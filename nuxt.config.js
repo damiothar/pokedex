@@ -18,7 +18,8 @@ export default {
 	css: [
 		'normalize.css/normalize.css',
 		'nes.css/css/nes.css',
-		'~/style/index.scss',
+		'~/assets/fonts/fonts.scss',
+		'~/assets/scss/index.scss',
 	],
 
 	// # ROUTER
@@ -40,7 +41,7 @@ export default {
 
 	// # STYLE RESOURCES MODULE
 	styleResources: {
-		scss: ['~/style/_utils.scss'],
+		scss: ['~/assets/scss/_utils.scss'],
 	},
 
 	// # BUILD MODULES
