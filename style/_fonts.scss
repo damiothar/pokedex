@@ -1,11 +1,12 @@
 @font-face {
 	font-family: 'Kongtext';
-	src: url('./fonts/KongtextRegular.eot');
-	src: url('./fonts/KongtextRegular.eot?#iefix') format('embedded-opentype'),
-		url('./fonts/KongtextRegular.woff2') format('woff2'),
-		url('./fonts/KongtextRegular.woff') format('woff'),
-		url('./fonts/KongtextRegular.ttf') format('truetype'),
-		url('./fonts/KongtextRegular.svg#KongtextRegular') format('svg');
+	src: url('/pokedex/fonts/KongtextRegular.eot');
+	src: url('/pokedex/fonts/KongtextRegular.eot?#iefix')
+			format('embedded-opentype'),
+		url('/pokedex/fonts/KongtextRegular.woff2') format('woff2'),
+		url('/pokedex/fonts/KongtextRegular.woff') format('woff'),
+		url('/pokedex/fonts/KongtextRegular.ttf') format('truetype'),
+		url('/pokedex/fonts/KongtextRegular.svg#KongtextRegular') format('svg');
 	font-weight: 400;
 	font-style: normal;
 	font-display: swap;
