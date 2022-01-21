@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[2],{309:function(e,t,n){"use strict";n.r(t),n.d(t,"general",(function(){return r})),n.d(t,"home",(function(){return c})),n.d(t,"pokemon",(function(){return o}));var r={prev:"Prev",next:"Next",back:"Go back"},c={title:"First gen pokedex"},o={characteristic:"Characteristic",abilities:"Abilities"}}}]);
