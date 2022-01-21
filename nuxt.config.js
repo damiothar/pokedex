@@ -66,8 +66,8 @@ export default {
 		parsePages: false,
 		strategy: 'prefix',
 		pages: {
-			home: { en: '/', es: '/' },
-			pokemon: { en: '/pokemon/:id', es: '/pokemon/:id' },
+			home: { en: '/pokedex/', es: '/pokedex/' },
+			pokemon: { en: '/pokedex/pokemon/:id', es: '/pokedex/pokemon/:id' },
 		},
 	},
 
