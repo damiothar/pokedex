@@ -23,6 +23,7 @@ export default {
 
 	// # ROUTER
 	router: {
+		base: '/pokedex/',
 		linkActiveClass: null,
 		linkExactActiveClass: '--active',
 	},
