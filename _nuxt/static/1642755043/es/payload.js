@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/es", {data:[{}],fetch:{},mutations:[["home\u002FSET_POKEMONS",[{name:"bulbasaur",id:"1"},{name:"ivysaur",id:"2"},{name:"venusaur",id:"3"},{name:"charmander",id:"4"},{name:"charmeleon",id:"5"}]]]});
