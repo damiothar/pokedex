@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/pokemon", {data:[{}],fetch:{},mutations:[["pokemon\u002FSET_ID",void 0]]});
