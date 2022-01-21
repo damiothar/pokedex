@@ -69,7 +69,6 @@ export const actions = {
 					const url = res.characteristics[random].url;
 
 					await this.$axios.$get(url).then((res) => {
-						console.log(res);
 						const characteristic = res.descriptions.find(
 							(item) => item.language.name === this.$i18n.locale
 						).description;
@@ -77,5 +76,12 @@ export const actions = {
 					});
 				});
 			});
+	},
+	clearPokemon({ commit }) {
+		commit('SET_ID', null);
+		commit('SET_NAME', null);
+		commit('SET_COVER', null);
+		commit('SET_ABILITIES', []);
+		commit('SET_CHARACTERISTIC', null);
 	},
 };

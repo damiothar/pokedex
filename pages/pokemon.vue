@@ -27,7 +27,7 @@
 		</main>
 
 		<aside class="back">
-			<NuxtLink class="nes-btn" :to="localePath('/')">
+			<NuxtLink class="nes-btn" :to="localePath({ name: 'home' })">
 				{{ $t('general.back') }}
 			</NuxtLink>
 		</aside>
@@ -35,12 +35,9 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 
 export default {
-	async asyncData({ params, store }) {
-		await store.dispatch('pokemon/getPokemon', params.id);
-	},
 	computed: {
 		...mapState('pokemon', [
 			'id',
@@ -49,6 +46,15 @@ export default {
 			'characteristic',
 			'abilities',
 		]),
+	},
+	created() {
+		this.getPokemon(this.$route.params.id);
+	},
+	beforeDestroy() {
+		this.clearPokemon();
+	},
+	methods: {
+		...mapActions('pokemon', ['getPokemon', 'clearPokemon']),
 	},
 };
 </script>

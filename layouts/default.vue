@@ -3,7 +3,7 @@
 		<div class="pokedex">
 			<div class="pokedex__inner">
 				<nav class="nav">
-					<NuxtLink :to="localePath('/')">
+					<NuxtLink :to="localePath({name: 'home'})">
 						<i class="nes-pokeball"></i>
 					</NuxtLink>
 					<div class="nav__lang">

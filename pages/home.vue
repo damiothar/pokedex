@@ -55,12 +55,12 @@
 import { mapState, mapGetters, mapActions } from 'vuex';
 
 export default {
-	async asyncData({ store }) {
-		await store.dispatch('home/getPokemons');
-	},
 	computed: {
 		...mapState('home', ['pokemons', 'pagination']),
 		...mapGetters('home', ['maxPagination']),
+	},
+	created() {
+		this.getPokemons();
 	},
 	methods: {
 		...mapActions('home', ['getPokemons', 'prevPokemons', 'nextPokemons']),
