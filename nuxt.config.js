@@ -1,6 +1,22 @@
 export default {
 	head: {
 		title: 'Pokedex',
+		link: [
+			{
+				rel: 'preconnect',
+				href: 'https://fonts.googleapis.com',
+			},
+			{
+				rel: 'preconnect',
+				href: 'https://fonts.gstatic.com',
+				crossorigin: true,
+			},
+			{
+				rel: 'stylesheet',
+				href: 'https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap',
+				crossorigin: true,
+			},
+		],
 	},
 
 	// # PLUGINS
@@ -18,8 +34,7 @@ export default {
 	css: [
 		'normalize.css/normalize.css',
 		'nes.css/css/nes.css',
-		'~/assets/fonts/fonts.scss',
-		'~/assets/scss/index.scss',
+		'~/styles/index.scss',
 	],
 
 	// # ROUTER
@@ -41,7 +56,7 @@ export default {
 
 	// # STYLE RESOURCES MODULE
 	styleResources: {
-		scss: ['~/assets/scss/_utils.scss'],
+		scss: ['~/styles/_utils.scss'],
 	},
 
 	// # BUILD MODULES
