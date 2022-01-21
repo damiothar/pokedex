@@ -1,0 +1,79 @@
+export const state = () => {
+	return {
+		id: null,
+		name: null,
+		cover: null,
+		abilities: [],
+		characteristic: null,
+	};
+};
+
+export const mutations = {
+	SET_ID(state, id) {
+		state.id = id;
+	},
+	SET_NAME(state, name) {
+		state.name = name;
+	},
+	SET_ABILITIES(state, abilities) {
+		state.abilities = abilities;
+	},
+	SET_COVER(state, cover) {
+		state.cover = cover;
+	},
+	SET_CHARACTERISTIC(state, characteristic) {
+		state.characteristic = characteristic;
+	},
+};
+
+export const actions = {
+	async getPokemon({ state, commit }, id) {
+		await commit('SET_ID', id);
+
+		await this.$axios
+			.$get(`https://pokeapi.co/api/v2/pokemon/${state.id}`)
+			.then(async (res) => {
+				// # NAME
+				const name = res.name;
+				commit('SET_NAME', name);
+
+				// # COVER
+				const cover = res.sprites.front_default;
+				commit('SET_COVER', cover);
+
+				// # ABILITIES
+				const abilities = [];
+				for (let i = 0; i < res.abilities.length; i++) {
+					const item = res.abilities[i];
+					await this.$axios.$get(item.ability.url).then((res) => {
+						const ability = res.names.find(
+							(item) => item.language.name === this.$i18n.locale
+						).name;
+						abilities.push(ability);
+					});
+				}
+				commit('SET_ABILITIES', abilities);
+
+				// # CHARACTERISTICS
+				const maxStat = res.stats.reduce((max, current) => {
+					const maxState = Number(max?.base_stat);
+					const currentState = Number(current.base_stat);
+					if (currentState > maxState) max = current;
+					return max;
+				});
+
+				await this.$axios.$get(maxStat.stat.url).then(async (res) => {
+					const random = this.$h.randomBetween(0, res.characteristics.length);
+					const url = res.characteristics[random].url;
+
+					await this.$axios.$get(url).then((res) => {
+						console.log(res);
+						const characteristic = res.descriptions.find(
+							(item) => item.language.name === this.$i18n.locale
+						).description;
+						commit('SET_CHARACTERISTIC', characteristic);
+					});
+				});
+			});
+	},
+};
