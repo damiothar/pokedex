@@ -28,10 +28,10 @@ export const mutations = {
 
 export const actions = {
 	async getPokemon({ state, commit }, id) {
-		await commit('SET_ID', id);
+		commit('SET_ID', id);
 
 		await this.$axios
-			.$get(`https://pokeapi.co/api/v2/pokemon/${state.id}`)
+			.$get(`https://pokeapi.co/api/v2/pokemon/${id}`)
 			.then(async (res) => {
 				// # NAME
 				const name = res.name;
@@ -63,7 +63,9 @@ export const actions = {
 				});
 
 				await this.$axios.$get(maxStat.stat.url).then(async (res) => {
-					const random = this.$h.randomBetween(0, res.characteristics.length);
+					const max = res.characteristics.length - 1;
+					const random = this.$h.randomBetween(0, max);
+
 					const url = res.characteristics[random].url;
 
 					await this.$axios.$get(url).then((res) => {
