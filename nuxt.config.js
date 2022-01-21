@@ -82,4 +82,6 @@ export default {
 
 	// # TELEMETRY (DATA COLLECTION NUXT PROJECT)
 	telemetry: false,
+
+	target: 'static',
 };
