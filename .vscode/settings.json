@@ -5,5 +5,20 @@
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": "explicit"
 	},
-	"vetur.validation.template": false
+	"vetur.validation.template": false,
+	"workbench.colorCustomizations": {
+		"titleBar.activeBackground": "#8f0010",
+		"titleBar.activeForeground": "#ffe0e3",
+		"titleBar.inactiveBackground": "#8f0010",
+		"titleBar.inactiveForeground": "#ffe0e399",
+		"titleBar.border": "#5c000a",
+		"commandCenter.background": "#8f0010",
+		"commandCenter.foreground": "#ffe0e3",
+		"commandCenter.border": "#ff001d55",
+		"commandCenter.activeBackground": "#b80016",
+		"commandCenter.activeForeground": "#ffe0e3",
+		"commandCenter.activeBorder": "#ff001d99",
+		"commandCenter.inactiveForeground": "#ffe0e399",
+		"commandCenter.inactiveBorder": "#ff001d26"
+	}
 }
